@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#002B45">
+  <title>Top 20 · Join</title>
+  <link rel="icon" href="/img/mv-symbol.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/brand.css">
+</head>
+<body class="team">
+  <header class="t-top">
+    <img src="/img/mv-logo-white.png" alt="MagVenture">
+    <div class="who"><span id="whoName"></span><span class="conn" id="conn">connecting…</span></div>
+  </header>
+
+  <main class="t-main">
+    <!-- Join -->
+    <section id="v-join" hidden>
+      <h1 class="brand-title">Top <span>20</span></h1>
+      <p>Pick a group name. One phone per group is enough.</p>
+      <form id="joinForm" class="field" autocomplete="off">
+        <input id="joinName" maxlength="24" placeholder="Group name" autocapitalize="words" enterkeyhint="go">
+        <button class="btn" type="submit">Join the game</button>
+      </form>
+      <p class="err" id="joinErr"></p>
+    </section>
+
+    <!-- Lobby -->
+    <section id="v-wait" hidden>
+      <div class="kicker">You're in</div>
+      <h2 id="waitTitle"></h2>
+      <p id="waitText">Keep your eyes on the big screen. The host starts the first question soon.</p>
+    </section>
+
+    <!-- Question -->
+    <section id="v-question" hidden>
+      <div class="kicker" id="qKicker"></div>
+      <h2 id="qCat"></h2>
+      <p class="aim">Aim for <b>#20</b> = 20 points. #1 gives only 1 point.</p>
+      <form id="answerForm" class="field" autocomplete="off">
+        <input id="answerInput" maxlength="80" placeholder="Your group's answer" autocapitalize="words" enterkeyhint="send">
+        <button class="btn" type="submit" id="answerBtn">Send answer</button>
+      </form>
+      <p class="err" id="answerErr"></p>
+      <div class="sent" id="sent" hidden>
+        ✓ Sent: <b id="sentText"></b><br>
+        <small>You can change it until the host locks the answers.</small>
+      </div>
+    </section>
+
+    <!-- Reveal: look at the screen -->
+    <section id="v-watch" hidden>
+      <div class="card watch">
+        <div class="eyes">👀</div>
+        <h2>Look at the big screen!</h2>
+        <p id="watchText"></p>
+      </div>
+    </section>
+
+    <!-- Result of this question -->
+    <section id="v-result" hidden>
+      <div class="card result" id="resultCard"></div>
+      <div class="stat-row">
+        <div class="card"><div class="v" id="rScore">0</div><div class="l">Total points</div></div>
+        <div class="card"><div class="v" id="rPlace">–</div><div class="l">Place</div></div>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section id="v-final" hidden>
+      <div class="card result" id="finalCard"></div>
+    </section>
+  </main>
+
+  <footer class="t-foot" id="foot" hidden>
+    Wrong group? <a href="#" id="leave">Switch group</a>
+  </footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/common.js"></script>
+  <script src="/team.js"></script>
+</body>
+</html>

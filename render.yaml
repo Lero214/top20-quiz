@@ -1,0 +1,14 @@
+# One-click deploy on Render (free plan): New + > Blueprint > pick this repo.
+services:
+  - type: web
+    name: top20-quiz
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: HOST_PIN
+        sync: false   # Render asks for the host PIN when you create the service

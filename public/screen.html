@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top 20 · Big screen</title>
+  <link rel="icon" href="/img/mv-symbol.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/brand.css">
+</head>
+<body class="screen">
+  <header class="s-top">
+    <img class="s-logo" src="/img/mv-logo-white.png" alt="MagVenture">
+    <div class="s-meta" id="meta"></div>
+  </header>
+
+  <!-- Lobby: how to join -->
+  <section class="s-view" id="v-lobby" hidden>
+    <div class="lobby">
+      <div>
+        <h1 class="brand-title">Top <span>20</span></h1>
+        <p class="lead">Every question has a top-20 list. Find the answer at number&nbsp;20.</p>
+        <ul class="rules">
+          <li><b>#20</b> = 20 points. The jackpot.</li>
+          <li><b>#1</b> = only 1 point. Too easy.</li>
+          <li><b>✗</b> Not on the list = 0 points.</li>
+          <li><b>1×</b> One answer per group per question.</li>
+        </ul>
+      </div>
+      <div class="join">
+        <div class="qr"><img id="qr" alt="QR code to join"></div>
+        <div class="url" id="joinUrl"></div>
+        <p>Scan or type the link, then enter your group name</p>
+      </div>
+    </div>
+    <div class="lobby-teams" id="lobbyTeams"></div>
+    <div class="lobby-foot" id="lobbyFoot"></div>
+  </section>
+
+  <!-- Question + reveal board -->
+  <section class="s-view" id="v-board" hidden>
+    <div class="q-head">
+      <div class="q-num" id="qNum"></div>
+      <h2 class="q-cat" id="qCat"></h2>
+    </div>
+    <div class="slots" id="slots"></div>
+    <div class="board-foot" id="boardFoot"></div>
+  </section>
+
+  <!-- Scoreboard -->
+  <section class="s-view scores" id="v-scores" hidden>
+    <h2>Scoreboard</h2>
+    <ol class="board" id="scoreList"></ol>
+  </section>
+
+  <!-- Final -->
+  <section class="s-view final" id="v-final" hidden>
+    <div class="kicker">And the winner is</div>
+    <div class="winner" id="winner"></div>
+    <div class="winner-pts" id="winnerPts"></div>
+    <ol class="board" id="finalList"></ol>
+  </section>
+
+  <div class="conn" id="conn">connecting…</div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/common.js"></script>
+  <script src="/screen.js"></script>
+</body>
+</html>

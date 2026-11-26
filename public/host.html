@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top 20 · Host</title>
+  <link rel="icon" href="/img/mv-symbol.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/brand.css">
+</head>
+<body class="host">
+  <header class="h-top">
+    <img src="/img/mv-logo-white.png" alt="MagVenture">
+    <span class="ttl">Top 20 · Host</span>
+    <span class="sp"></span>
+    <a href="/screen" target="_blank" rel="noopener">Open big screen ↗</a>
+    <span class="conn" id="conn">connecting…</span>
+  </header>
+
+  <!-- PIN -->
+  <form class="pin card" id="pinForm" hidden autocomplete="off">
+    <h2 class="brand-title" style="font-size:44px">Top <span>20</span></h2>
+    <p>Host PIN</p>
+    <div class="field">
+      <input id="pinInput" type="password" inputmode="numeric" placeholder="PIN">
+      <button class="btn" type="submit">Open host controls</button>
+    </div>
+    <p class="err" id="pinErr"></p>
+  </form>
+
+  <main class="h-main" id="main" hidden>
+    <div class="banner" id="restore" hidden>
+      <p id="restoreText"></p>
+      <button class="btn small" id="restoreYes">Restore game</button>
+      <button class="btn small ghost" id="restoreNo">Start fresh</button>
+    </div>
+
+    <!-- Main control -->
+    <div class="card control">
+      <div class="info">
+        <div class="kicker" id="phaseLabel"></div>
+        <h2 id="hCat"></h2>
+        <p class="hint" id="hint"></p>
+      </div>
+      <div class="btns">
+        <button class="btn ghost" id="backBtn">◀ Back</button>
+        <button class="btn primary" id="nextBtn"></button>
+      </div>
+    </div>
+
+    <div class="h-grid">
+      <div class="card">
+        <h3 id="teamsTitle">Groups</h3>
+        <table class="subs" id="subs"></table>
+        <p class="empty" id="noTeams">No groups yet. They join on the big screen's link.</p>
+      </div>
+      <div style="display:grid; gap:18px">
+        <div class="card" id="answersCard" hidden>
+          <h3>The list (only you see this)</h3>
+          <ol class="list" id="answerList"></ol>
+        </div>
+        <div class="card">
+          <h3>Scoreboard</h3>
+          <ol class="hboard" id="hboard"></ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Links and game</h3>
+      <div class="links">
+        <span>Groups join at <code id="joinLink"></code></span>
+        <span>Big screen: <code id="screenLink"></code></span>
+        <span class="sp" style="flex:1"></span>
+        <button class="btn danger small" id="resetBtn">Reset game</button>
+      </div>
+      <p class="hint" id="qInfo"></p>
+    </div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/common.js"></script>
+  <script src="/host.js"></script>
+</body>
+</html>

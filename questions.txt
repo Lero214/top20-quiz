@@ -1,0 +1,122 @@
+// TOP 20 QUESTIONS
+// ------------------------------------------------------------------
+// How to edit:
+//   - A line starting with  #  is a new question (the category shown on screen).
+//   - The next 20 lines are the answers, from #1 (1 point) to #20 (20 points).
+//   - Extra spellings the game should also accept go after a  |  on the same line,
+//     e.g.  United States | USA | US | America
+//   - Small typos are accepted automatically (Rusia -> Russia). The host can fix any match.
+//   - Lines starting with // are notes and are ignored.
+//
+// PLACEHOLDER QUESTIONS: replace them with the real ones.
+// ------------------------------------------------------------------
+
+# Biggest countries in the world (by area)
+1. Russia | Russian Federation
+2. Canada
+3. China | PRC | People's Republic of China
+4. United States | USA | US | U.S.A. | America | United States of America
+5. Brazil | Brasil
+6. Australia
+7. India
+8. Argentina
+9. Kazakhstan
+10. Algeria
+11. DR Congo | Democratic Republic of the Congo | DRC | Congo | Congo Kinshasa | Zaire
+12. Saudi Arabia | Saudi
+13. Mexico
+14. Indonesia
+15. Sudan
+16. Libya
+17. Iran
+18. Mongolia
+19. Peru
+20. Chad
+
+# Countries with the most people
+1. India
+2. China | PRC
+3. United States | USA | US | America | United States of America
+4. Indonesia
+5. Pakistan
+6. Nigeria
+7. Brazil | Brasil
+8. Bangladesh
+9. Russia | Russian Federation
+10. Ethiopia
+11. Mexico
+12. Japan
+13. Egypt
+14. Philippines | The Philippines
+15. DR Congo | Democratic Republic of the Congo | DRC | Congo | Congo Kinshasa
+16. Vietnam | Viet Nam
+17. Iran
+18. Turkey | Türkiye | Turkiye
+19. Germany | Deutschland
+20. Thailand
+
+# EU countries with the most people
+1. Germany | Deutschland
+2. France
+3. Italy
+4. Spain
+5. Poland
+6. Romania
+7. Netherlands | Holland | The Netherlands
+8. Belgium
+9. Czechia | Czech Republic
+10. Portugal
+11. Sweden
+12. Greece
+13. Hungary
+14. Austria
+15. Bulgaria
+16. Denmark | Danmark
+17. Finland
+18. Slovakia
+19. Ireland
+20. Croatia
+
+# Elements of the periodic table (by atomic number)
+1. Hydrogen | H
+2. Helium | He
+3. Lithium | Li
+4. Beryllium | Be
+5. Boron | B
+6. Carbon | C
+7. Nitrogen | N
+8. Oxygen | O
+9. Fluorine | F
+10. Neon | Ne
+11. Sodium | Na | Natrium
+12. Magnesium | Mg
+13. Aluminium | Aluminum | Al
+14. Silicon | Si
+15. Phosphorus | P | Phosphor
+16. Sulfur | Sulphur | S
+17. Chlorine | Cl
+18. Argon | Ar
+19. Potassium | K | Kalium
+20. Calcium | Ca
+
+# Biggest US states (by land area)
+1. Alaska
+2. Texas
+3. California
+4. Montana
+5. New Mexico
+6. Arizona
+7. Nevada
+8. Colorado
+9. Wyoming
+10. Oregon
+11. Idaho
+12. Utah
+13. Kansas
+14. Minnesota
+15. Nebraska
+16. South Dakota
+17. North Dakota
+18. Missouri
+19. Oklahoma
+20. Washington | Washington State

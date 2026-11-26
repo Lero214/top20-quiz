@@ -1,0 +1,43 @@
+# Top 20 – live group quiz
+
+Groups try to find the answer at **#20** of a top-20 list. #20 = 20 points, #1 = 1 point, not on the list = 0.
+Groups answer from a phone, the big screen shows the 20 slots and pops each correct answer in at its number with the group's name.
+
+## The three pages
+
+| Page | Who | What |
+|---|---|---|
+| `/screen` | Projector / big screen | Join QR code, the question with slots 1–20, reveal animation, scoreboard, winner |
+| `/host` | The host (PIN) | One big **Next** button that runs the game, live answers, fix a match, remove a group, reset |
+| `/` | One phone per group | Join with a group name, send the answer, see points and place |
+
+Game flow per question (the host presses **Next** each time): question → lock answers & reveal → show the full top 20 → scoreboard → next question … → final results.
+
+Tips for the host
+- Arrow keys or a presenter clicker (PageDown/PageUp) also work as Next/Back on the host page.
+- Small typos are accepted automatically (marked *typo?*). Use the **Counts as** drop-down to fix any match, even during the reveal.
+- Two phones with the same group name join the same group.
+- If the server restarts, the host page offers to restore the game.
+
+## Questions
+
+Edit [`questions.txt`](questions.txt): a line starting with `#` is the question, then 20 answers from #1 to #20.
+Extra accepted spellings go after `|`, for example `United States | USA | US | America`.
+The current questions are **placeholders**: replace them with the real ones.
+After editing: push to GitHub (Render redeploys by itself) or, when running locally, press **Reset game** on the host page.
+
+## Run it
+
+Online (Render, free): the service is defined in [`render.yaml`](render.yaml). Render → **New + → Blueprint** → pick this repo → type a host PIN → deploy. Every push to `main` redeploys.
+Free Render services sleep after 15 minutes without visitors; open `/screen` a few minutes before the quiz to wake it.
+
+Locally (same Wi-Fi for everyone):
+
+```
+npm install
+npm start
+```
+
+Then open `http://localhost:3000/screen` on the laptop. The QR code shows the laptop's network address for the phones. Host PIN defaults to `top20` (set `HOST_PIN` to change it).
+
+`npm test` plays a full simulated game with 9 groups.
