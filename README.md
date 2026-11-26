@@ -1,5 +1,7 @@
 # Top 20 – live group quiz
 
+**Live:** https://top20-quiz.onrender.com (groups) · [/screen](https://top20-quiz.onrender.com/screen) (big screen) · [/host](https://top20-quiz.onrender.com/host) (host)
+
 Groups try to find the answer at **#20** of a top-20 list. #20 = 20 points, #1 = 1 point, not on the list = 0.
 Groups answer from a phone, the big screen shows the 20 slots and pops each correct answer in at its number with the group's name.
 
@@ -30,6 +32,7 @@ Locally: point the app at a private file with `QUESTIONS_FILE=C:patheal-questio
 ## Run it
 
 Online (Render, free): the service is defined in [`render.yaml`](render.yaml). Render → **New + → Blueprint** → this repo's URL → deploy. **Set your own `HOST_PIN`** in the service's Environment (the default `4720` is visible in this public code).
+The service deploys from the public repo URL, so after pushing a code change click **Manual Deploy → Deploy latest commit** in Render. (Changing a Secret File or environment variable redeploys by itself.)
 Free Render services sleep after 15 minutes without visitors; open `/screen` a few minutes before the quiz to wake it.
 
 Locally (same Wi-Fi for everyone):
