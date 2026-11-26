@@ -9,6 +9,3 @@ services:
     startCommand: npm start
     healthCheckPath: /healthz
     autoDeploy: true
-    envVars:
-      - key: HOST_PIN
-        sync: false   # Render asks for the host PIN when you create the service

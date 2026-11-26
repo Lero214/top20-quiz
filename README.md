@@ -28,7 +28,7 @@ After editing: push to GitHub (Render redeploys by itself) or, when running loca
 
 ## Run it
 
-Online (Render, free): the service is defined in [`render.yaml`](render.yaml). Render → **New + → Blueprint** → pick this repo → type a host PIN → deploy. Every push to `main` redeploys.
+Online (Render, free): the service is defined in [`render.yaml`](render.yaml). Render → **New + → Blueprint** → pick this repo → deploy. Host PIN: `4720` unless you set `HOST_PIN` in the service's Environment. Every push to `main` redeploys.
 Free Render services sleep after 15 minutes without visitors; open `/screen` a few minutes before the quiz to wake it.
 
 Locally (same Wi-Fi for everyone):
@@ -38,6 +38,9 @@ npm install
 npm start
 ```
 
-Then open `http://localhost:3000/screen` on the laptop. The QR code shows the laptop's network address for the phones. Host PIN defaults to `top20` (set `HOST_PIN` to change it).
+Then open `http://localhost:3000/screen` on the laptop. The QR code shows the laptop's network address for the phones. Host PIN defaults to `4720` (set the `HOST_PIN` environment variable to change it; on Render: service → Environment).
 
 `npm test` plays a full simulated game with 9 groups.
+
+Rehearse or take screenshots: `npm run demo -- 2` resets the game, joins 9 demo groups and steps to the reveal of question 1 (0 = lobby, 1 = question, 2 = reveal, 3 = full list, 4 = scoreboard, 5 = question 2, …).
+Use another questions file with `QUESTIONS_FILE=path/to/file.txt npm start`.

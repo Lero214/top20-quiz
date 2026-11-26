@@ -17,8 +17,8 @@ const QRCode = require('qrcode');
 const { parseQuestions, matchAnswer } = require('./match');
 
 const PORT = Number(process.env.PORT) || 3000;
-const HOST_PIN = String(process.env.HOST_PIN || 'top20');
-const QUESTIONS_FILE = path.join(__dirname, 'questions.txt');
+const HOST_PIN = String(process.env.HOST_PIN || '4720');
+const QUESTIONS_FILE = process.env.QUESTIONS_FILE || path.join(__dirname, 'questions.txt');
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const STATE_FILE = path.join(DATA_DIR, 'state.json');
 const BOOT_ID = crypto.randomBytes(6).toString('hex');
@@ -32,7 +32,7 @@ let questionsHash = '';
 function loadQuestions() {
   questions = parseQuestions(fs.readFileSync(QUESTIONS_FILE, 'utf8'));
   questionsHash = crypto.createHash('sha1').update(JSON.stringify(questions)).digest('hex').slice(0, 12);
-  console.log(`Loaded ${questions.length} questions from questions.txt`);
+  console.log(`Loaded ${questions.length} questions from ${path.basename(QUESTIONS_FILE)}`);
   questions.forEach((q, i) => {
     if (q.answers.length !== 20) console.warn(`  ! Question ${i + 1} "${q.category}" has ${q.answers.length} answers (expected 20)`);
   });
