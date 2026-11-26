@@ -155,6 +155,13 @@ async function until(fn, label, ms = 3000) {
     const last = qs[q].answers[19].name;
     assert.ok((await call(teams[5], 'submit', { text: last })).ok);
     for (let k = 0; k < 3; k++) await call(host, 'next');
+    if (q === 1) {
+      await until(() => screen.last.phase === 'scores' && screen.last.q === 1, 'scoreboard 2');
+      const farum = screen.last.leaderboard.find((r) => r.name === 'Farum FC');
+      assert.deepStrictEqual([farum.prevPlace, farum.place, farum.prevScore, farum.score, farum.round], [7, 1, 4, 24, 20], 'ranking moves');
+      await until(() => teams[5].last.move === 6, 'phone shows +6 places');
+      console.log('✓ ranking: Farum FC climbs from 7th to 1st (+6 places), phone shows the move');
+    }
   }
   await call(host, 'next');
   await until(() => screen.last.phase === 'final', 'final');

@@ -84,7 +84,8 @@ function renderResult(s) {
   }
   $('resultCard').innerHTML = html;
   $('rScore').textContent = s.score == null ? 0 : s.score;
-  $('rPlace').textContent = s.place ? `${ordinal(s.place)} / ${s.teamCount}` : '–';
+  const mv = s.move ? ` <span class="mv ${s.move > 0 ? 'up' : 'down'}">${s.move > 0 ? '▲' : '▼'}${Math.abs(s.move)}</span>` : '';
+  $('rPlace').innerHTML = s.place ? `${ordinal(s.place)} / ${s.teamCount}${mv}` : '–';
 }
 
 function renderFinal(s) {

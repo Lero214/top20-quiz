@@ -101,13 +101,19 @@ function scoreboard() {
     });
     return { id: t.id, name: t.name, score, round };
   });
+  // Standings before this question, so the screen can slide groups from old to new place
+  rows.forEach((r) => { r.prevScore = r.score - (r.round || 0); });
+  const rank = (list, key, out) => {
+    let place = 0;
+    let last = null;
+    list.forEach((r, i) => {
+      if (r[key] !== last) { place = i + 1; last = r[key]; }
+      r[out] = place;
+    });
+  };
+  rank([...rows].sort((a, b) => b.prevScore - a.prevScore || a.name.localeCompare(b.name)), 'prevScore', 'prevPlace');
   rows.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
-  let place = 0;
-  let last = null;
-  rows.forEach((r, i) => {
-    if (r.score !== last) { place = i + 1; last = r.score; }
-    r.place = place;
-  });
+  rank(rows, 'score', 'place');
   return rows;
 }
 
@@ -189,6 +195,7 @@ function teamView(teamId) {
     // during the reveal animation the score would spoil the surprise
     score: c.phase === 'reveal' ? null : me.score,
     place: c.phase === 'reveal' ? null : me.place,
+    move: result && me.prevPlace ? me.prevPlace - me.place : 0,
     teamCount: board.length,
   };
 }

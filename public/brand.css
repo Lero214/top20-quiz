@@ -115,6 +115,13 @@ body.screen {
 .board li.first { background: var(--white); color: var(--navy); }
 .board li.first .p { color: var(--orange); }
 .board li.first .r { color: var(--navy-60); }
+.scores .board li { grid-template-columns: 6vh 1fr 8vh 8vh 10vh; will-change: transform; }
+.board li .mv { font-size: 2.2vh; font-weight: 900; text-align: right; }
+.board li .mv.up { color: #3CCB7F; }
+.board li .mv.down { color: var(--navy-40); }
+.board li.first .mv.up { color: var(--green); }
+.board li .r.pop { animation: pop .6s cubic-bezier(.2,1.4,.4,1); color: var(--white); }
+.board li.first .r.pop { color: var(--navy); }
 @keyframes rowIn { from { transform: translateY(1.5vh); opacity: 0; } to { transform: none; opacity: 1; } }
 
 .final { align-items: center; justify-content: center; text-align: center; }
@@ -154,6 +161,9 @@ body.team { min-height: 100vh; display: flex; flex-direction: column; }
 .stat-row { display: flex; gap: 12px; }
 .stat-row .card { flex: 1; text-align: center; padding: 16px 10px; }
 .stat-row .v { font-size: 30px; font-weight: 900; }
+.stat-row .mv { font-size: 16px; vertical-align: middle; }
+.stat-row .mv.up { color: var(--green); }
+.stat-row .mv.down { color: var(--navy-60); }
 .stat-row .l { font-size: 12px; color: var(--navy-60); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
 .watch { text-align: center; padding: 40px 10px; }
 .watch .eyes { font-size: 56px; }
