@@ -23,12 +23,13 @@ Tips for the host
 
 Edit [`questions.txt`](questions.txt): a line starting with `#` is the question, then 20 answers from #1 to #20.
 Extra accepted spellings go after `|`, for example `United States | USA | US | America`.
-The current questions are **placeholders**: replace them with the real ones.
-After editing: push to GitHub (Render redeploys by itself) or, when running locally, press **Reset game** on the host page.
+**This repo is public, so the real questions never go in it.** `questions.txt` here holds placeholders only.
+Online: Render → the `top20-quiz` service → **Environment → Secret Files → Add** → file name `questions.txt`, paste the real questions (same format) → save. Render redeploys and the app uses that file instead.
+Locally: point the app at a private file with `QUESTIONS_FILE=C:patheal-questions.txt npm start`. After a change, press **Reset game** on the host page.
 
 ## Run it
 
-Online (Render, free): the service is defined in [`render.yaml`](render.yaml). Render → **New + → Blueprint** → pick this repo → deploy. Host PIN: `4720` unless you set `HOST_PIN` in the service's Environment. Every push to `main` redeploys.
+Online (Render, free): the service is defined in [`render.yaml`](render.yaml). Render → **New + → Blueprint** → this repo's URL → deploy. **Set your own `HOST_PIN`** in the service's Environment (the default `4720` is visible in this public code).
 Free Render services sleep after 15 minutes without visitors; open `/screen` a few minutes before the quiz to wake it.
 
 Locally (same Wi-Fi for everyone):

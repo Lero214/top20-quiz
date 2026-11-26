@@ -8,7 +8,9 @@
 //   - Small typos are accepted automatically (Rusia -> Russia). The host can fix any match.
 //   - Lines starting with // are notes and are ignored.
 //
-// PLACEHOLDER QUESTIONS: replace them with the real ones.
+// PLACEHOLDER QUESTIONS. This repo is PUBLIC: never put the real questions here.
+// Real questions go in Render > top20-quiz > Environment > Secret Files > questions.txt
+// (same format as this file). The app uses that file instead of this one.
 // ------------------------------------------------------------------
 
 # Biggest countries in the world (by area)
