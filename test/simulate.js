@@ -13,13 +13,14 @@ const assert = require('assert');
 const PORT = 3999;
 const URL = `http://localhost:${PORT}`;
 const DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), 'top20-'));
+const FIXTURE = path.join(__dirname, 'fixture-questions.txt'); // fixed sample questions, so the test never depends on the real ones
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 let srv;
 
 function startServer() {
   return new Promise((resolve, reject) => {
     srv = spawn(process.execPath, [path.join(__dirname, '..', 'server.js')], {
-      env: { ...process.env, PORT, HOST_PIN: 'test', DATA_DIR },
+      env: { ...process.env, PORT, HOST_PIN: 'test', DATA_DIR, QUESTIONS_FILE: FIXTURE },
       stdio: ['ignore', 'pipe', 'pipe'],
     });
     srv.stdout.on('data', (d) => { if (String(d).includes('running')) resolve(); });
@@ -46,9 +47,12 @@ async function until(fn, label, ms = 3000) {
 (async () => {
   // ---- pure matching checks ----
   const { matchAnswer, parseQuestions } = require('../match');
-  const qs = parseQuestions(fs.readFileSync(path.join(__dirname, '..', 'questions.txt'), 'utf8'));
-  assert.ok(qs.length >= 1, 'questions parsed');
-  qs.forEach((q) => assert.strictEqual(q.answers.length, 20, `${q.category} has 20 answers`));
+  // the real questions file must be well-formed
+  const real = parseQuestions(fs.readFileSync(path.join(__dirname, '..', 'questions.txt'), 'utf8'));
+  assert.ok(real.length >= 1, 'questions.txt has questions');
+  real.forEach((q, i) => assert.strictEqual(q.answers.length, 20, `questions.txt question ${i + 1} "${q.category}" needs 20 answers`));
+  console.log(`✓ questions.txt: ${real.length} questions, 20 answers each`);
+  const qs = parseQuestions(fs.readFileSync(FIXTURE, 'utf8'));
   const A = qs[0].answers;
   const cases = [
     ['Peru', 19], ['peru ', 19], ['Chad', 20], ['Russia', 1], ['Rusia', 1], ['USA', 4], ['the united states', 4],
@@ -56,7 +60,7 @@ async function until(fn, label, ms = 3000) {
   ];
   for (const [txt, want] of cases) assert.strictEqual(matchAnswer(txt, A).rank, want, `match "${txt}"`);
   assert.strictEqual(matchAnswer('Rusia', A).fuzzy, true);
-  console.log(`✓ matching (${cases.length} cases) and ${qs.length} questions with 20 answers each`);
+  console.log(`✓ matching (${cases.length} cases)`);
 
   // ---- live game ----
   await startServer();
